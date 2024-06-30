@@ -1,4 +1,6 @@
-def pascal_triangle(n):
+#!/usr/bin/python3
+""" Module for pascal's triangle concept """
+def pascal_triangle(n): """ Function decleration """
     if n <= 0:
         return []
 

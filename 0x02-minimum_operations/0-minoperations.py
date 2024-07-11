@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """This script defines a function to calculate the minimum number of operation"""
 
-def minOperations(n):
+def minOperations(n: int) -> int:
     """
     Calculate the minimum number of operations
 

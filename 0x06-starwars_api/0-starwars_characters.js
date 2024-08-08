@@ -20,7 +20,7 @@ function retriveMovieChar(filmId) {
     const siteCharacter = filmData.characters;
 
     siteCharacter.forEach((siteCharacter) => {
-      request(siteCharacters, (errorChar, responseChar, BodyChar) => {
+      request(siteCharacter, (errorChar, responseChar, bodyChar) => {
         if (errorChar) {
           console.error('Error retriving character:', errorChar);
           return;

@@ -2,45 +2,26 @@
 
 const request = require('request');
 
-function retriveMovieChar(filmId) {
-  const site = `https://swapi.dev/api/films/${filmId}/`;
-
-  request(site, (error, response, body) => {
+const data = (req, j) => {
+  if (j === req.length) return;
+  request(req[j], (error, response, body) => {
     if (error) {
-      console.error('Error:', error);
-      return;
+      throw error;
+    } else {
+      console.log(JSON.parse(body).name);
+      data(req, j + 1);
     }
-
-    if (response.statusCode !== 200) {
-      console.error('Cant fetch the data');
-      return;
-    }
-
-    const filmData = JSON.parse(body);
-    const siteCharacter = filmData.characters;
-
-    siteCharacter.forEach((siteCharacter) => {
-      request(siteCharacter, (errorChar, responseChar, bodyChar) => {
-        if (errorChar) {
-          console.error('Error retriving character:', errorChar);
-          return;
-        }
-
-        if (responseChar.statusCode !== 200) {
-          console.error('Cannot retrieve character data');
-          return;
-        }
-
-        const data = JSON.parse(bodyChar);
-        console.log(data.name);
-      });
-    });
   });
-}
+};
 
-const filmId = process.argv[2];
-if (!filmId) {
-  console.log('Usage: node script.js <film_id>');
-} else {
-  retriveMovieChar(filmId);
-}
+request(
+  `https://swapi-api.hbtn.io/api/films/${process.argv[2]}`,
+  (error, response, body) => {
+    if (error) {
+      throw error;
+    } else {
+      const data_char = JSON.parse(body).characters;
+      data(data_char, 0);
+    }
+  }
+);

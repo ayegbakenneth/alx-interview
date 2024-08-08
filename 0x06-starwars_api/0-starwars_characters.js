@@ -1,15 +1,16 @@
 #!/usr/bin/node
+// File executable path
 
 const request = require('request');
 
-const data = (req, j) => {
-  if (j === req.length) return;
-  request(req[j], (error, response, body) => {
+const data = (ken, j) => {
+  if (j === ken.length) return;
+  request(ken[j], (error, response, body) => {
     if (error) {
       throw error;
     } else {
       console.log(JSON.parse(body).name);
-      data(req, j + 1);
+      data(ken, j + 1);
     }
   });
 };

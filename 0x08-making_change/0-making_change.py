@@ -2,7 +2,7 @@
 """ File executable path """
 
 
-def makeChange(coins, total):
+def makeChange(coins, sum_total):
     """ Function that uses different coins
     based on their value to reach a near total """
     if sum_total <= 0:

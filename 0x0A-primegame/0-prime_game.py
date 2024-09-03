@@ -4,7 +4,6 @@
 
 def isWinner(x, nums):
     """A function that decides a winner"""
-
     if x <= 0 or nums is None:
         return None
     if x != len(nums):
@@ -13,7 +12,6 @@ def isWinner(x, nums):
     also_prime = 0
     a = [1 for x in range(sorted(nums)[-1] + 1)]
     a[0], a[1] = 0, 0
-    
     for i in range(2, len(a)):
         rm_multiples(a, i)
     """ Start the game """
@@ -25,9 +23,9 @@ def isWinner(x, nums):
             also_prime += 1
     """ This decides the winner of the game """
     if prime > also_prime:
-        return "prime"
+        return "Ben"
     if also_prime > prime:
-        return "also_prime"
+        return "Maria"
     return None
 
 
